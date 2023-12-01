@@ -16,24 +16,24 @@ rendered properly in your Markdown viewer.
 
 # 텍스트 생성 전략 [[text-generation-strategies]]
 
-텍스트 생성은 오픈엔드 텍스트 생성, 요약, 번역 등 많은 NLP 작업에 필수적입니다.
-또한 텍스트를 출력으로 하는 다양한 혼합 모달리티 애플리케이션에서도 역할을 합니다, 예를 들어 음성-텍스트 및 비전-텍스트 변환 등이 있습니다. 텍스트를 생성할 수 있는 모델에는
-GPT2, XLNet, OpenAI GPT, CTRL, TransformerXL, XLM, Bart, T5, GIT, Whisper 등이 있습니다.
+텍스트 생성은 자유 형식의 텍스트 생성, 요약, 번역 등 많은 NLP 작업에서 중요합니다.
+또한 음성을 텍스트로 변환하거나 이미지를 텍스트로 변환하는 등 텍스트를 출력으로 사용하는 다양한 혼합 모달리티 응용 프로그램에서도 역할을 수행하고 있습니다.
+GPT2, XLNet, OpenAI GPT, CTRL, TransformerXL, XLM, Bart, T5, GIT, Whisper 등과 같은 다양한 모델이 텍스트를 생성할 수 있습니다.
 
-다양한 작업에 대한 텍스트 출력을 생성하기 위해 [`~transformers.generation_utils.GenerationMixin.generate`] 메소드를 사용하는 몇 가지 예시를 확인하세요:
+다양한 작업을 위한 텍스트를 생성하기 위해 [`~transformers.generation_utils.GenerationMixin.generate`] 메소드를 사용하는 예시를 아래에서 확인할 수 있습니다:
 * [텍스트 요약](./tasks/summarization#inference)
 * [이미지 캡셔닝](./model_doc/git#transformers.GitForCausalLM.forward.example)
 * [오디오 전사](./model_doc/whisper#transformers.WhisperForConditionalGeneration.forward.example)
 
-generate 메소드에 대한 입력은 모델의 모달리티에 따라 다르며, 모델의 전처리 클래스에 의해 반환됩니다, 예를 들어 AutoTokenizer 또는 AutoProcessor와 같은 클래스가 있습니다. 모델의 전처리자가 하나 이상의 종류의 입력을 생성하는 경우, generate()에 모든 입력을 전달합니다. 각 모델의 전처리자에 대해 해당 모델의 문서에서 자세히 알아볼 수 있습니다.
+generate 메소드에 대한 입력은 모델의 모달리티에 따라 다르며, AutoTokenizer 또는 AutoProcessor와 같은 모델의 전처리 클래스에서 반환됩니다. 모델의 전처리자가 여러 유형의 입력을 생성하는 경우, generate()에 모든 입력을 전달합니다. 각 모델의 전처리자에 대한 내용은 해당 모델의 문서에서 자세히 알아볼 수 있습니다.
 
-텍스트를 생성하기 위해 출력 토큰을 선택하는 과정을 디코딩이라고 하며, `generate()` 메소드가 사용할 디코딩 전략을 사용자 지정할 수 있습니다. 디코딩 전략을 수정해도 학습 가능한 매개변수의 값은 변경되지 않습니다.
-그러나, 이는 생성된 출력의 품질에 눈에 띄는 영향을 미칠 수 있습니다. 이는 텍스트의 반복을 줄이고 더 일관성 있게 만드는 데 도움이 될 수 있습니다.
+텍스트를 생성하기 위해 출력 토큰을 선택하는 과정을 디코딩이라고 하며, `generate()` 메소드가 사용할 디코딩 전략을 사용자가 정의할 수 있습니다. 디코딩 전략을 수정해도 학습 중에 최적화되는 매개변수의 값은 변경되지 않습니다.
+그러나, 디코딩 전략을 수정하면 생성된 텍스트 출력에 큰 영향을 미칠 수 있습니다. 텍스트의 반복을 줄이고 텍스트 생성을 더 일관성 있게 만들 수 있습니다.
 
 이 가이드에서는 다음을 설명합니다:
-* 기본 생성 구성
+* 기본 텍스트 생성 구성
 * 일반적인 디코딩 전략과 주요 매개변수
-* 🤗 Hub에서 사용자의 미세 조정 모델과 함께 사용자 지정 생성 구성을 저장하고 공유하는 방법
+* 🤗 Hub에서 사용자의 미세 조정 모델과 함께 사용자 정의 생성 구성을 저장하고 공유하는 방법
 
 ## 기본 텍스트 생성 구성 [[default-text-generation-configuration]]
 
