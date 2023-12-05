@@ -87,8 +87,8 @@
       title: 🤗 Tokenizers 라이브러리에서 토크나이저 사용하기
     - local: multilingual
       title: 다국어 모델 추론하기
-    - local: generation_strategies
-      title: 텍스트 생성 전략 사용자 정의
+    - local: in_translation
+      title: (번역중) Customize text generation strategy
     - local: create_a_model
       title: 모델별 API 사용하기
     - local: custom_models
@@ -192,7 +192,7 @@
 - sections:
   - sections:
     - local: agent
-      title: 에이전트와 도구
+      title: 에이전트와 도구들
     - local: in_translation
       title: (번역중) Auto Classes
     - local: in_translation

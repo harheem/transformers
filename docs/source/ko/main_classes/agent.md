@@ -14,7 +14,7 @@ rendered properly in your Markdown viewer.
 
 -->
 
-# 에이전트와 도구 [[agents-tools]]
+# 에이전트와 도구들 [[agents-tools]]
 
 <Tip warning={true}>
 
@@ -22,7 +22,7 @@ Transformers Agent는 실험 중인 API로 언제든지 변경될 수 있습니�
 
 </Tip>
 
-에이전트와 도구에 대해 더 알고 싶다면 [소개 가이드](../transformers_agents)를 읽어보세요. 이 페이지에는 기본 클래스에 대한 API 문서가 포함되어 있습니다.
+에이전트와 도구들에 대해 더 알고 싶다면 [소개 가이드](../transformers_agents)를 읽어보세요. 이 페이지에는 기본 클래스에 대한 API 문서가 포함되어 있습니다.
 
 ## 에이전트 [[agents]]
 
